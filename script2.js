@@ -8,6 +8,7 @@ const meetings = document.getElementById("meetings");
 const defaultJoin = document.getElementById("defaultJoin");
 const chatBtn = document.getElementById("chatBtn");
 
+const serverURL = "https://webrtc-pube.onrender.com";
 let peerConnection;
 let dataChannel;
 let localStream = new MediaStream();
@@ -84,7 +85,7 @@ const createOffer = async () => {
       console.log("getting");
     } else {
       const userId = prompt("Enter your UserId");
-      const res = await fetch("https://192.168.1.19:8001/postoffer", {
+      const res = await fetch(`${serverURL}/postoffer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +105,7 @@ const createOffer = async () => {
       const joinButton = document.createElement("button");
       joinButton.innerHTML = "Join";
       joinButton.addEventListener("click", async () => {
-        const res = await fetch(`https://192.168.1.19:8001/${url}/getanswer`);
+        const res = await fetch(`${serverURL}/${url}/getanswer`);
         try {
           let answer = await res.json();
           if (!peerConnection.currentRemoteDescription) {
@@ -128,7 +129,7 @@ const createAnswer = async () => {
   createBtn.classList.add("hide");
   joinBtn.classList.add("hide");
   let url = prompt("Enter URL");
-  const res = await fetch(`https://192.168.1.19:8001/${url}/getoffer`);
+  const res = await fetch(`${serverURL}/${url}/getoffer`);
   let offer = await res.json();
   let answer;
   peerConnection = getPeerConnection();
@@ -181,7 +182,7 @@ const createAnswer = async () => {
       answer = peerConnection.localDescription;
       console.log("getting");
     } else {
-      const res = await fetch(`https://192.168.1.19:8001/${url}/postanswer`, {
+      const res = await fetch(`${serverURL}/${url}/postanswer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -197,7 +198,7 @@ const createAnswer = async () => {
 };
 
 const joinCall = async () => {
-  const res = await fetch(`https://192.168.1.19:8001/${url}/getanswer`);
+  const res = await fetch(`${serverURL}/${url}/getanswer`);
   let answer = await res.json();
   if (!peerConnection.currentRemoteDescription) {
     peerConnection.setRemoteDescription(answer);
