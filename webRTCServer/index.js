@@ -48,15 +48,15 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-var privateKey = fs.readFileSync("192.168.1.19-key.pem");
-var certificate = fs.readFileSync("192.168.1.19.pem");
+// var privateKey = fs.readFileSync("192.168.1.19-key.pem");
+// var certificate = fs.readFileSync("192.168.1.19.pem");
 
 https
   .createServer(
-    {
-      key: privateKey,
-      cert: certificate,
-    },
+    // {
+    //   key: privateKey,
+    //   cert: certificate,
+    // },
     app,
   )
   .listen(port);
