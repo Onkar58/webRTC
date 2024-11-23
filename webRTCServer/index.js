@@ -5,8 +5,9 @@ const bodyParser = require("body-parser");
 const crypto = require("crypto");
 const fs = require("fs");
 const https = require("https");
+require("dotenv").config();
 
-const port = 8001;
+const port = process.env.PORT_NO || 8001;
 
 const SDP_OBJECTS = {};
 
@@ -50,13 +51,16 @@ app.get("/", (req, res) => {
 
 // var privateKey = fs.readFileSync("192.168.1.19-key.pem");
 // var certificate = fs.readFileSync("192.168.1.19.pem");
-
-https
-  .createServer(
-    // {
-    //   key: privateKey,
-    //   cert: certificate,
-    // },
-    app,
-  )
-  .listen(port);
+//
+// https
+//   .createServer(
+//     {
+//       key: privateKey,
+//       cert: certificate,
+//     },
+//     app,
+//   )
+//   .listen(port);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
