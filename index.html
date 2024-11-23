@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Local WEB RTC Connection</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div class="buttons">
+        <button id="createBtn">Create Meet</button>
+        <button id="joinBtn">Join Meet</button>
+        <button id="endBtn" class="hide">End Meet</button>
+        <button id="waitingBtn" class="hide">Waiting</button>
+        <button id="chatBtn" class="hide">Chat</button>
+        <div id="meetings"></div>
+      </div>
+      <div id="videos">
+        <div class="video-container window" id="selfVideoContainer">
+          <video id="localVideo" autoplay muted></video>
+          <span class="label">You</span>
+        </div>
+
+        <div class="video-container full" id="remoteVideoContainer">
+          <video id="remoteVideo" autoplay></video>
+          <span class="label">Remote</span>
+        </div>
+      </div>
+    </div>
+    <div id="messages" class="hide">
+      <div id="messageInput">
+        <input type="text" id="messageBox" placeholder="Enter message" />
+        <input type="submit" id="sendButton" />
+      </div>
+      <div id="cross">X</div>
+    </div>
+  </body>
+  <script src="./script2.js"></script>
+  <script src="./stylejs.js"></script>
+</html>

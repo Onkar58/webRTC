@@ -1,0 +1,3 @@
+node_modules/
+./webRTCServer/192.168.1.19.pem
+./webRTCServer/192.168.1.19-key.pem

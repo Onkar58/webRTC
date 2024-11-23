@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the server required for the webRTC Connection making",
+  "main": "index.js",
+  "author": "Onkar58",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "http-server": "^14.1.1",
+    "ws": "^8.18.0"
+  }
+}
